@@ -16,8 +16,8 @@ function createBot() {
   reconnecting = false;
 
   const bot = mineflayer.createBot({
-    host: 'sudana_smp.aternos.me',
-    port: 53659,
+    host: 'puttur_smp.aternos.me',
+    port: 48940,
     username: baseUsername,
     version: '1.16.5',
   });
@@ -29,7 +29,7 @@ function createBot() {
     setTimeout(() => bot.chat('/login aagop04'), 1000);
     setTimeout(() => bot.chat('/mvtp lobby'), 2000);
     setTimeout(() => bot.chat('/tp 0 142 21'),3000);
-    setTimeout(() => bot.chat('/give
+    setTimeout(() => bot.chat('/effect give puttursmp_official minecraft:regeneration 10800 1'),4000);
     startHumanLikeBehavior();
     scheduleRandomDisconnect();
   });
