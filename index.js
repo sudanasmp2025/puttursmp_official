@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.get("/", (req, res) => res.send("Bot is running"));
 app.listen(PORT, () => console.log(`Web server running on port ${PORT}`));
 
-let baseUsername = 'puttursmp_official';
+let baseUsername = 'puttursmp';
 let botInstance = null;
 let reconnecting = false;
 
@@ -29,7 +29,7 @@ function createBot() {
     setTimeout(() => bot.chat('/login aagop04'), 1000);
     setTimeout(() => bot.chat('/mvtp lobby'), 2000);
     setTimeout(() => bot.chat('/tp 0 142 21'),3000);
-    setTimeout(() => bot.chat('/effect give puttursmp_official minecraft:regeneration 10800 1'),4000);
+    setTimeout(() => bot.chat('/effect give puttursmp minecraft:regeneration 10800 1'),4000);
     startHumanLikeBehavior();
     scheduleRandomDisconnect();
   });
