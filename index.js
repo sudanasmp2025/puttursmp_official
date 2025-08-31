@@ -27,13 +27,13 @@ function createBot() {
   bot.on('spawn', () => {
     bot.chat('/register aagop04');
     setTimeout(() => bot.chat('/login aagop04'), 1000);
-    setTimeout(() => bot.chat('/tp 0 142 21'), 2000);
-
+    setTimeout(() => bot.chat('/mvtp lobby'), 2000);
+    setTimeout(() => bot.chat('/tp 0 142 21'), 3000);
     // ✅ Apply regeneration effect every time it joins
     setTimeout(() => {
       bot.chat(`/effect give puttursmp_official minecraft:regeneration 10800 1`);
       console.log("Applied regeneration effect for 3 hours.");
-    }, 3000);
+    }, 4000);
 
     startHumanLikeBehavior();
     scheduleRandomDisconnect();
