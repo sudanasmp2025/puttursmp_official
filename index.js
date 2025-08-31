@@ -13,13 +13,11 @@ let reconnecting = false;
 function createBot() {
   if (botInstance || reconnecting) return;
 
-  reconnecting = false;
-
   const bot = mineflayer.createBot({
     host: 'puttur_smp.aternos.me',
     port: 48940,
     username: baseUsername,
-    version: '1.16.5',
+    // version: '1.16.5',  // ❌ remove if server is not 1.16.5
   });
 
   botInstance = bot;
@@ -29,28 +27,28 @@ function createBot() {
     setTimeout(() => bot.chat('/login aagop04'), 1000);
     setTimeout(() => bot.chat('/mvtp lobby'), 2000);
     setTimeout(() => bot.chat('/tp 0 142 21'), 3000);
-    // ✅ Apply regeneration effect every time it joins
+
     setTimeout(() => {
-      bot.chat(`/effect give puttursmp_official minecraft:regeneration 10800 1`);
+      bot.chat('/effect give puttursmp_official minecraft:regeneration 10800 1');
       console.log("Applied regeneration effect for 3 hours.");
     }, 4000);
 
-    startHumanLikeBehavior();
+    startHumanLikeBehavior();  
     scheduleRandomDisconnect();
   });
 
   function startHumanLikeBehavior() {
     const actions = ['forward', 'back', 'left', 'right', 'jump', 'sneak'];
 
-    function moveRandomly() {
-      const action = actions[Math.floor(Math.random() * actions.length)];
-      bot.setControlState(action, true);
-      setTimeout(() => {
-        bot.setControlState(action, false);
-        const delay = 1000 + Math.random() * 6000;
-        setTimeout(moveRandomly, delay);
-      }, 300 + Math.random() * 1000);
-    }
+    function moveRandomly() {  
+      const action = actions[Math.floor(Math.random() * actions.length)];  
+      bot.setControlState(action, true);  
+      setTimeout(() => {  
+        bot.setControlState(action, false);  
+        const delay = 1000 + Math.random() * 6000;  
+        setTimeout(moveRandomly, delay);  
+      }, 300 + Math.random() * 1000);  
+    }  
 
     moveRandomly();
   }
@@ -67,13 +65,19 @@ function createBot() {
   bot.on('end', () => {
     botInstance = null;
     if (!reconnecting) {
+      reconnecting = true;
       const delay = Math.floor(Math.random() * 21 + 10) * 1000;
       console.log(`Bot disconnected. Reconnecting in ${delay / 1000} seconds...`);
-      setTimeout(createBot, delay);
+      setTimeout(() => {
+        reconnecting = false;
+        createBot();
+      }, delay);
     }
   });
 
-  bot.on('error', console.log);
+  bot.on('error', (err) => {
+    console.log("Bot error:", err);
+  });
 }
 
 createBot();
