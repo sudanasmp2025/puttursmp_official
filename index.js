@@ -27,7 +27,7 @@ function createBot() {
   bot.on('spawn', () => {
     bot.chat('/register aagop04');
     setTimeout(() => bot.chat('/login aagop04'), 1000);
-    setTimeout(() => bot.chat('/tp -11 183 -112'),2000);
+    setTimeout(() => bot.chat('/tp -11 185 -111'),2000);
     setTimeout(() => bot.chat('/effect give puttursmp minecraft:regeneration 10800 1'),4000);
     startHumanLikeBehavior();
     scheduleRandomDisconnect();
