@@ -17,7 +17,7 @@ function createBot() {
 
   const bot = mineflayer.createBot({
     host: 'puttur_smp.aternos.me',
-    port: 26271,
+    port: 14336,
     username: baseUsername,
     version: '1.16.5',
   });
